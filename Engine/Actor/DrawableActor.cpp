@@ -7,7 +7,10 @@ DrawableActor::DrawableActor(const char* _img)
 {
 	auto length = strlen(_img) + 1;
 	this->image = new char[length];
-		strcpy_s(this->image, length, _img);
+	strcpy_s(this->image, length, _img);
+
+	//너비 설정
+	width = static_cast<int>(strlen(image));
 }
 
 DrawableActor::~DrawableActor()

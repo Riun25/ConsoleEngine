@@ -16,7 +16,10 @@ public:
 	virtual void SetPosition(const Vector2& _newPos) override;
 
 
-private:
+protected:
 	// 화면에 그릴 문자 값
 	char* image;
+
+	// 너비(문자열 길이)
+	int width = 0;
 };

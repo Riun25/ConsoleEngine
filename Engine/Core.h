@@ -27,6 +27,21 @@ void Log(const char* _format, T&&... args)
 	std::cout << buffer;
 }
 
+// 랜덤 함수
+inline int Random(int _min, int _max)
+{
+	// 차이 구하기
+	int diff = (_max - _min) + 1;
+	return ((diff * rand()) / (RAND_MAX + 1)) + _min;
+}
+
+// min ~ max 사이의 랜덤 값을 반환해주는 함수
+inline float RendomPercent(float _min, float _max)
+{
+	float random = (static_cast<float>(rand()) / static_cast<float>(RAND_MAX));
+	return random * (_max - _min) + _min;
+}
+
 // 디버깅 용도
 #ifdef _DEBUG
 #define new new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
