@@ -69,18 +69,18 @@ void Engine::Run()
 	// Game-Loop
 	while (true)
 	{
-		// 종료 조건
-		if (mIsQuit)
-		{
-			break;
-		} 
-
 		mpTimeManager->Update();
 		ProcessFrame();
 		/*if (mShouldUpdate)
 		{
 			Draw();
 		}*/
+
+		// 종료 조건 : 액터 정리 후 종료되어야 함
+		if (mIsQuit)
+		{
+			break;
+		}
 	}
 }
 

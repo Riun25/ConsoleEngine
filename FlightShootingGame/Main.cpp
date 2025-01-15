@@ -3,6 +3,8 @@
 
 int main()
 {
+	CheckMemoryLeak();
+
 	Game game;
 	game.LoadLevel(new TestLevel);
 	game.Run();

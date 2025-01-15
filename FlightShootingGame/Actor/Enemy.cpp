@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Engine/Engine.h"
+#include "Actor/EnemyBullet.h"
 
 Enemy::Enemy(const char* _img, int _posY)
 	:DrawableActor(_img)
@@ -44,4 +45,24 @@ void Enemy::Update(float _dTime)
 	{
 		Destroy();
 	}
+
+	// 탄약 발사
+	static float elapsedTime = 0.0f;
+	static float fireInterval = RendomPercent(1.0f, 2.0f);
+
+	// 타이머 업데이트
+	elapsedTime += _dTime;
+
+	// 타이머 처리
+	if (elapsedTime < fireInterval)
+	{
+		return;
+	}
+
+	// 타이머 초기화
+	elapsedTime = 0.0f;
+	fireInterval = RendomPercent(1.0f, 2.0f);
+
+	// 탄약 생성
+	Engine::Get().AddActor(new EnemyBullte(Vector2(pos.x + width/2, pos.y)));
 }

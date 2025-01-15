@@ -8,7 +8,7 @@ Player::Player(const char* _img)
 	: Super(_img)
 {
 	// 플레이어 시작 위치
-	pos = Vector2(0, 20);
+	pos = Vector2(Engine::Get().ScreenSize().x / 2, Engine::Get().ScreenSize().y - 1);
 }
 
 void Player::Update(float _dTime)
@@ -17,7 +17,7 @@ void Player::Update(float _dTime)
 	Super::Update(_dTime);
 
 	// 탄약 발사
-	if (InputManager::Get().GetKey(VK_SPACE))
+	if (InputManager::Get().GetKeyDown(VK_SPACE))
 	{
 		Vector2 bulletPos(pos.x + width / 2, pos.y - 1);
    		Engine::Get().AddActor(new PlayerBullet(bulletPos));
